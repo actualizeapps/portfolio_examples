@@ -1,0 +1,13 @@
+<! -- loads the dynamic array class -->
+<script src="DynamicArray.js"></script>
+<script>
+// client code testing three interfaces:
+const arr = new DynamicArray(2);
+
+for (let i = 0; i < 100000; i++) {
+    arr.add(9);
+}
+console.log(arr.getStats())
+
+
+</script>
