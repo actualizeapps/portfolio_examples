@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Array Resizing Performance</title>
+  <script src="DynamicArray.js"></script>
+  <style>
+    body {
+      font-family: "Segoe UI", Roboto, sans-serif;
+      background: #f9fafb;
+      color: #333;
+      line-height: 1.6;
+      margin: 0;
+      padding: 2rem;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2b6cb0;
+      margin-bottom: 2rem;
+    }
+
+    #content {
+      max-width: 700px;
+      margin: 0 auto;
+      background: #fff;
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+
+    h2 {
+      color: #2f855a;
+      margin-top: 1.5rem;
+    }
+
+    button {
+      display: inline-block;
+      background: #3182ce;
+      color: white;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-top: 1rem;
+      transition: background 0.2s;
+    }
+
+    button:hover {
+      background: #2b6cb0;
+    }
+
+    #simulation {
+      margin-top: 2rem;
+      padding: 1rem;
+      background: #f1f5f9;
+      border-radius: 8px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>How Array Resizing Impacts Performance</h1>
+
+  <div id="content">
+    <h2>What's the Test?</h2>
+    <p>Call the array's <code>add</code> function 100,000 times.</p>
+
+    <button id="runBtn">Run Simulation!</button>
+
+    <div id="simulation"></div>
+  </div>
+
+  <script>
+    document.getElementById('runBtn').addEventListener('click', () => {
+      const simulationDiv = document.getElementById('simulation');
+      simulationDiv.innerHTML = "Running Simulation...";
+
+      setTimeout(() => {
+        simulationDiv.innerHTML = "<h2>Strategies:</h2>";
+
+        const arrGrowBy1 = new DynamicArray(2, RESIZE_STRATEGY.GROW_BY_1);
+        for (let i = 0; i < 100000; i++) arrGrowBy1.add(9);
+        simulationDiv.innerHTML += `<h3>Grow by 1:</h3>${arrGrowBy1.getStats()}`;
+
+        const arrDouble = new DynamicArray(2, RESIZE_STRATEGY.DOUBLE);
+        for (let i = 0; i < 100000; i++) arrDouble.add(9);
+        simulationDiv.innerHTML += `<h3>Double in size:</h3>${arrDouble.getStats()}`;
+      }, 0);
+    });
+  </script>
+
+</body>
+</html>

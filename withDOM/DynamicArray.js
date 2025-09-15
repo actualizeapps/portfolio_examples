@@ -17,8 +17,8 @@ class DynamicArray {
 
     getStats() {
         return `
-        Wasted space: ${this.capacity - this.length}
-        Average add time: ${this.averageAddTime.toFixed(40)}
+        Wasted space: ${this.capacity - this.length}<br>
+        Average add time: ${this.averageAddTime.toFixed(40)}<br>
         Number of Times Resized: ${this.countResize}
         `
     }
