@@ -1,11 +1,17 @@
+const RESIZE_STRATEGY = Object.freeze({
+  GROW_BY_1: 1,
+  DOUBLE: 2,
+});
+
 class DynamicArray {
-    constructor(capacity) {
+    constructor(capacity, resizeStrategy=RESIZE_STRATEGY.GROW_BY_1) {
         this.capacity = capacity;
         this.data = new Array(this.capacity);
         this.length = 0
         this.countResize = 0;
         this.averageAddTime = 0;
         this.addCount = 0;
+        this.resizeStrategy = resizeStrategy
     }
 
     getStats() {
@@ -22,8 +28,12 @@ class DynamicArray {
         // Check if we need to grow the array
         if (this.length >= this.capacity) {
             this.countResize++;
-            this.capacity += 1; // Grow by 1
-            //this.capacity = this.capacity * 2; // Grow by double
+            if (this.resizeStrategy == RESIZE_STRATEGY.GROW_BY_1) {
+                this.capacity += 1; // Grow by 1
+            } else if (this.resizeStrategy == RESIZE_STRATEGY.DOUBLE) {
+                this.capacity = this.capacity * 2; // Grow by double
+            }
+
             const newData = new Array(this.capacity);
 
             // Copy existing elements to new array
