@@ -7,7 +7,7 @@ const arrGrowBy1 = new DynamicArray(2, RESIZE_STRATEGY.GROW_BY_1);
 for (let i = 0; i < 100000; i++) {
     arrGrowBy1.add(9);
 }
-console.log("Grow by 1 dynamic array performance:" + arrGrowBy1.getStats())
+console.log("Grow by 1 dynamic array performance:" + arrGrowBy1.getStats() + "BigO 'add' time: O(n^2), space: O(n)")
 
 
 const arrDouble = new DynamicArray(2, RESIZE_STRATEGY.DOUBLE);
@@ -15,7 +15,7 @@ const arrDouble = new DynamicArray(2, RESIZE_STRATEGY.DOUBLE);
 for (let i = 0; i < 100000; i++) {
     arrDouble.add(9);
 }
-console.log("Double in size dynamic array performance:" + arrDouble.getStats())
+console.log("Double in size dynamic array performance:" + arrDouble.getStats() + "BigO 'add' time: O(n), space: O(n)")
 
 
 </script>
