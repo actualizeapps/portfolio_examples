@@ -7,13 +7,14 @@ class Timer {
         this.displayElement = document.getElementById('timer');
         this.startButton = document.getElementById('startButton');
         this.updateDisplay();
-        this.onStartClick(() => {
+        this.startButton.addEventListener('click', () => {
             this.start();
         });
     }
     
     start() {
         this.startTime = Date.now();
+        this.hideStartButton();
         
         this.updateDisplay();
         
@@ -28,6 +29,7 @@ class Timer {
     
     stop() {
         if (this.timerInterval) {
+            this.showStartButton();
             clearInterval(this.timerInterval);
             this.timerInterval = null;
         }
@@ -54,10 +56,6 @@ class Timer {
 
     hideStartButton() {
         this.startButton.style.display = 'none';
-    }
-
-    onStartClick(callback) {
-        this.startButton.addEventListener('click', callback);
     }
 
 }

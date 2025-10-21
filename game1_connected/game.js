@@ -1,8 +1,8 @@
 class DotGame {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
-        this.renderer = new Renderer(this.canvas);
-        this.dotManager = new DotManager(this.canvas.width, this.canvas.height);
+        this.ctx = this.canvas.getContext('2d');
+        this.dotManager = new DotManager(this.canvas);
         this.multiplier = new MultiplierTarget(this.canvas);
         this.counter = document.getElementById('counter');
         this.gameDuration = 12000; 
@@ -28,7 +28,7 @@ class DotGame {
         this.draw();
     }
     
-    handleClick() {
+    handleClick(event) {
         if (this.multiplier.isHit(event)) {
             const dotsToAdd = this.multiplier.handleHit(this.dotManager.getCount());
             this.dotManager.addDots(dotsToAdd);
@@ -41,12 +41,16 @@ class DotGame {
     }
     
     draw() {
-        this.renderer.clear();
+        this.clear();
 
-        this.renderer.drawDots(this.dotManager.getDots());
+        this.dotManager.drawDots();
         if (this.gameRunning) {
-            this.multiplier.draw(this.renderer.getContext());
+            this.multiplier.draw(this.ctx);
         }
+    }
+
+    clear() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 

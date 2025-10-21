@@ -1,8 +1,8 @@
 class DotGame {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
-        this.renderer = new Renderer(this.canvas);
-        this.dotManager = new DotManager(this.canvas.width, this.canvas.height);
+        this.ctx = this.canvas.getContext('2d');
+        this.dotManager = new DotManager(this.canvas);
         this.multiplier = new MultiplierTarget(this.canvas);
         this.counter = document.getElementById('counter');
         this.setupEventListeners();
@@ -26,11 +26,13 @@ class DotGame {
     }
     
     draw() {
-        this.renderer.clear();
+        this.clear();
+        this.dotManager.drawDots();
+        this.multiplier.draw(this.ctx);
+    }
 
-        console.log(this.dotManager.getDots());
-        this.renderer.drawDots(this.dotManager.getDots());
-        this.multiplier.draw(this.renderer.getContext());
+    clear() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
     }
 }
 
