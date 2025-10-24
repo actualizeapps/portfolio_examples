@@ -8,6 +8,7 @@ class CustomHashMap {
         this.size = 0;
         this.bucketCount = initialSize;
         this.loadFactor = 0.75; // Resize when 75% full
+        this.getChecks = 0;
     }
 
     // Simple hash function for strings and numbers
@@ -55,6 +56,7 @@ class CustomHashMap {
     get(key) {
         const index = this.hash(key);
         const bucket = this.buckets.data[index];
+        this.getChecks++;
         
         if (!bucket) {
             return null;
@@ -113,8 +115,11 @@ class CustomHashMap {
         this.size = 0;
     }
 
-    // Debug method to see bucket distribution
-    getBucketStats() {
+    getBigOInfo() {
+        return "'set' time: O(1), space: O(1)<br>'get' time: O(1), space: O(1)";
+    }
+
+    getStats() {
         let filledBuckets = 0;
         let maxChainLength = 0;
         
@@ -125,12 +130,9 @@ class CustomHashMap {
                 maxChainLength = Math.max(maxChainLength, bucket.length);
             }
         }
-        
-        return {
-            filledBuckets,
-            totalBuckets: this.bucketCount,
-            loadFactor: this.size / this.bucketCount,
-            maxChainLength
-        };
+        const emptyBuckets = this.bucketCount - filledBuckets;
+
+        return "Custom HashMap<br>Checks If Exists: "+this.getChecks+"<br>Bucket Count: "+this.bucketCount+"<br>Empty Buckets: "+emptyBuckets+"<br>MaxChainLength: "+maxChainLength+"<br>"+this.getBigOInfo();
     }
+
 }

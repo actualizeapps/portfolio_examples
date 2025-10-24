@@ -8,6 +8,7 @@ class CustomHashSet {
         this.size = 0;
         this.bucketCount = initialSize;
         this.loadFactor = 0.75; // Resize when 75% full
+        this.hasChecks = 0;
     }
 
     // Simple hash function for strings and numbers
@@ -49,7 +50,8 @@ class CustomHashSet {
     has(element) {
         const index = this.hash(element);
         const bucket = this.buckets.data[index];
-        
+        this.hasChecks++;
+
         if (!bucket) {
             return false;
         }
@@ -107,8 +109,13 @@ class CustomHashSet {
         this.size = 0;
     }
 
+
+    getBigOInfo() {
+        return "'add' time: O(1), space: O(1)<br>'has' time: O(1), space: O(1)";
+    }
+
     // Debug method to see bucket distribution
-    getBucketStats() {
+    getStats() {
         let filledBuckets = 0;
         let maxChainLength = 0;
         
@@ -119,12 +126,8 @@ class CustomHashSet {
                 maxChainLength = Math.max(maxChainLength, bucket.length);
             }
         }
-        
-        return {
-            filledBuckets,
-            totalBuckets: this.bucketCount,
-            loadFactor: this.size / this.bucketCount,
-            maxChainLength
-        };
+        const emptyBuckets = this.bucketCount - filledBuckets;
+
+        return "Custom HashSet<br>Checks If Exists: "+this.hasChecks+"<br>Bucket Count: "+this.bucketCount+"<br>Empty Buckets: "+emptyBuckets+"<br>MaxChainLength: "+maxChainLength+"<br>"+this.getBigOInfo();
     }
 }

@@ -4,6 +4,7 @@ class DotManager {
         this.ctx = canvas.getContext('2d');
         this.colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3', '#54A0FF'];
         this.addUniqueFunction = null;
+        this.getCollisionStatsFunction = null;
         this.resetDotsDataStructure();
     }
     
@@ -38,6 +39,7 @@ class DotManager {
         
         // Check against all existing circles
         for (let i = 0; i < this.dots.length; i++) {
+            this.collisionsChecked++;
             if (newCircle.x == this.dots.data[i].x && newCircle.y == this.dots.data[i].y) {
                 overlaps = true;
                 break;
@@ -51,7 +53,7 @@ class DotManager {
     }
 
     getStats() {
-        return "<p style='font-weight: bold;'>Gameplay Stats:</p><div style='padding-left: 20px;'>Total Dots: " + this.dots.length + "<br>" + this.dots.getStats() + "</div>";
+        return "<p style='font-weight: bold;'>Collision Detection Stats:</p><div style='padding-left: 20px;'>"+this.getCollisionStatsFunction() + "</div>";
     }
 
     drawDot(dot) {
@@ -80,16 +82,23 @@ class DotManager {
     getCount() {
         return this.dots.length;
     }
+
+    getDynamicArrayCollisionStats() {
+        return "DynamicArray<br>Total Dots: " + this.dots.length + "<br>CollisionsChecked: " + this.collisionsChecked;
+    }
     
     resetDotsDataStructure() {
         this.dots = new DynamicArray(undefined, RESIZE_STRATEGY.DOUBLE);
+        this.collisionsChecked = 0;
         this.occupiedPositions = new CustomHashSet();
 
         const dataStructure = document.getElementById('dataStructure').value;
         if (dataStructure.includes('hash')) {
             this.addUniqueFunction = () => this.addUniqueHashSet();
+            this.getCollisionStatsFunction = () => this.occupiedPositions.getStats();
         } else if (dataStructure.includes('dynamic')) {
             this.addUniqueFunction = () => this.addUniqueDynamicArray();
+            this.getCollisionStatsFunction = () => this.getDynamicArrayCollisionStats();
         }
     }
 }

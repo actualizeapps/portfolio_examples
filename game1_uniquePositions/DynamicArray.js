@@ -21,13 +21,20 @@ class DynamicArray {
         this.perfTimer = null;
         this.numberOfElementsShifted = 0;
     }
-
     getResizeStrategy() {
         return this.resizeStrategy === RESIZE_STRATEGY.GROW_BY_1 ? "Grow by 1" : "Double";
     }
 
     getStats() {
-        return "Dynamic Array<br>Resize Strategy: "+this.getResizeStrategy()+"<br>Wasted space: "+(this.capacity - this.length)+"<br>Average add time: "+this.averageAddTime.toFixed(40)+"<br>Number of Times Resized: "+this.countResize +"<br>Number of Elements Shifted: "+this.numberOfElementsShifted;
+        return "Dynamic Array<br>Resize Strategy: "+this.getResizeStrategy()+"<br>Wasted space: "+(this.capacity - this.length)+"<br>Average add time: "+this.averageAddTime.toFixed(40)+"<br>Number of Times Resized: "+this.countResize +"<br>Number of Elements Shifted: "+this.numberOfElementsShifted+"<br>"+this.getBigOInfo();
+    }
+
+    getBigOInfo() {
+        if (this.resizeStrategy === RESIZE_STRATEGY.GROW_BY_1) {
+            return "'add' time: O(n), space: O(n)<br>'addSorted' time: O(n), space: O(n)";
+        } else if (this.resizeStrategy === RESIZE_STRATEGY.DOUBLE) {
+            return "'add' time: O(1), space: O(n)<br>'addSorted' time: O(n), space: O(n)";
+        }
     }
 
     startPerfTimer() {
