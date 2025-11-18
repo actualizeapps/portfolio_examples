@@ -69,9 +69,12 @@ class DotManager {
             this.dots = new LinkedList(this.colors, (dot) => dot.color);
             this.getDataFunction = () => this.dots.convertToArray();
         } else if (dataStructure.includes('dynamic')) {
-            this.dots = new DynamicArray(undefined, RESIZE_STRATEGY.DOUBLE, this.colors, (dot) => dot.color);
+            if (dataStructure.includes('grow-by-1')) {
+                this.dots = new DynamicArray(10, RESIZE_STRATEGY.GROW_BY_1, this.colors, (dot) => dot.color);
+            } else if (dataStructure.includes('double')) {
+                this.dots = new DynamicArray(10, RESIZE_STRATEGY.DOUBLE, this.colors, (dot) => dot.color);
+            }
             this.getDataFunction = () => this.dots.data;
-            console.log("Dynamic Array created");
         }
     }
 }

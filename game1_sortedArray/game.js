@@ -16,8 +16,7 @@ class DotGame {
     }
 
     startGame() {
-        this.dotManager.resetDotsArray();
-        this.stats.innerHTML = ""
+        this.dotManager.resetDotsDataStructure();
         this.gameRunning = true;
         this.multiplier.create();
         this.updateCounter();
@@ -25,7 +24,7 @@ class DotGame {
     }
     
     endGame() {
-        this.stats.innerHTML = this.dotManager.getStats();
+        this.stats.innerHTML = this.dotManager.getStats() + this.stats.innerHTML;
         this.gameRunning = false;
         this.multiplier.clear();
         this.draw();

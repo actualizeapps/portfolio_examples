@@ -3,7 +3,7 @@ class DotManager {
         this.canvas = canvas;
         this.ctx = canvas.getContext('2d');
         this.colors = ['#FF6B6B', '#4ECDC4', '#45B7D1', '#96CEB4', '#FECA57', '#FF9FF3', '#54A0FF'];
-        this.resetDotsArray();
+        this.resetDotsDataStructure();
     }
     
     getRandomColor() {
@@ -23,7 +23,7 @@ class DotManager {
     }
 
     getStats() {
-        return "<p style='font-weight: bold;'>Stats:</p><div style='padding-left: 20px;'>" + this.dots.getStats() + "</div>";
+        return "<p style='font-weight: bold;'>Gameplay Stats:</p><div style='padding-left: 20px;'>Total Dots: " + this.dots.length + "<br>" + this.dots.getStats() + "</div>";
     }
 
     drawDot(dot) {
@@ -63,8 +63,13 @@ class DotManager {
         return this.dots.length;
     }
     
-    resetDotsArray() {
-        this.dots = new DynamicArray(undefined, RESIZE_STRATEGY.DOUBLE, this.colors, (dot) => dot.color);
+    resetDotsDataStructure() {
+        const dataStructure = document.getElementById('dataStructure').value;
+        if (dataStructure.includes('dynamic-array-grow')) {
+            this.dots = new DynamicArray(10, RESIZE_STRATEGY.GROW_BY_1, this.colors, (dot) => dot.color);
+        } else if (dataStructure.includes('dynamic-array-double')) {
+            this.dots = new DynamicArray(10, RESIZE_STRATEGY.DOUBLE, this.colors, (dot) => dot.color);
+        }
     }
 }
 

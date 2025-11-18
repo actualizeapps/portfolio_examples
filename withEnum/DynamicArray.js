@@ -10,17 +10,27 @@ class DynamicArray {
         this.data = new Array(this.capacity);
         this.length = 0
         this.countResize = 0;
-        this.averageAddTime = 0;
+        this.totalAddTime = 0;
         this.addCount = 0;
         this.resizeStrategy = resizeStrategy
     }
-
+    
     getStats() {
         return `
+        Total time: ${(this.totalAddTime/1000).toFixed(2)} seconds
+        Items added: ${this.addCount}
         Wasted space: ${this.capacity - this.length}
-        Average add time: ${this.averageAddTime.toFixed(40)}
         Number of Times Resized: ${this.countResize}
+        ${this.getBigOInfo()}
         `
+    }
+
+    getBigOInfo() {
+        if (this.resizeStrategy === RESIZE_STRATEGY.GROW_BY_1) {
+            return "BigO 'add' time: O(n), space: O(n)";
+        } else if (this.resizeStrategy === RESIZE_STRATEGY.DOUBLE) {
+            return "BigO 'add' time: O(1), space: O(n)";
+        }
     }
 
     add(element) {
@@ -47,7 +57,7 @@ class DynamicArray {
         this.length+=1;
         const timeItTook = performance.now() - startTime
         this.addCount++;
-        this.averageAddTime = (this.averageAddTime + timeItTook) / this.addCount;
+        this.totalAddTime += timeItTook;
     }
 
     print() {

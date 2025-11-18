@@ -92,16 +92,26 @@ class DotManager {
     getDynamicArrayCollisionStats() {
         return "DynamicArray<br>Total Dots: " + this.dots.length + "<br>CollisionsChecked: " + this.collisionsChecked;
     }
+
+    getHashSetCollisionStats() {
+        return "Total Dots: " + this.dots.length + "<br>" +this.occupiedPositions.getStats()
+    }
     
     resetDotsDataStructure() {
         this.dots = new DynamicArray(undefined, RESIZE_STRATEGY.DOUBLE);
         this.collisionsChecked = 0;
-        this.occupiedPositions = new CustomHashMap();
 
         const dataStructure = document.getElementById('dataStructure').value;
         if (dataStructure.includes('hash')) {
             this.addUniqueFunction = () => this.addUniqueXHashMap();
-            this.getCollisionStatsFunction = () => this.occupiedPositions.getStats();
+            this.getCollisionStatsFunction = () => this.getHashSetCollisionStats();
+            if (dataStructure.includes('no-resize')) {
+                this.occupiedPositions = new CustomHashMap(undefined, BUCKET_RESIZE_STRATEGY.NONE, HASH_FUNCTION_STRATEGY.CHAR_CODE_SUM);
+            }else if (dataStructure.includes('char-code-sum')) {
+                this.occupiedPositions = new CustomHashMap(undefined, BUCKET_RESIZE_STRATEGY.DYNAMIC, HASH_FUNCTION_STRATEGY.CHAR_CODE_SUM);
+            } else if (dataStructure.includes('prime-multiply')) {
+                this.occupiedPositions = new CustomHashMap(undefined, BUCKET_RESIZE_STRATEGY.DYNAMIC, HASH_FUNCTION_STRATEGY.PRIME_MULTIPLY);
+            } 
         } else if (dataStructure.includes('dynamic')) {
             this.addUniqueFunction = () => this.addUniqueXDynamicArray();
             this.getCollisionStatsFunction = () => this.getDynamicArrayCollisionStats();

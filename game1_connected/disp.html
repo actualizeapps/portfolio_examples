@@ -36,6 +36,12 @@
         #startButton:hover {
             background-color: #45B7D1;
         }
+        
+        #stats {
+            width: fit-content;    
+            margin: 0 auto;    
+            text-align: left; 
+        }
     </style>
 </head>
 <body>
@@ -45,7 +51,13 @@
     
     <div><button id="startButton">Start Game</button></div>
     <canvas id="gameCanvas" width="600" height="400"></canvas>
-    
+    <div><select id="dataStructure">
+        <option value="dynamic-array-grow-by-1">Dynamic Array (Grow by 1)</option>
+        <option value="dynamic-array-double">Dynamic Array (Double in size)</option>
+      </select></div>
+
+    <div id="stats"></div>
+
     <script src="game.js"></script>
     <script src="timer.js"></script>
     <script src="dotManager.js"></script>

@@ -79,16 +79,22 @@
       const simulationDiv = document.getElementById('simulation');
       simulationDiv.innerHTML = "Running Simulation...";
 
+      const arrGrowBy1 = new DynamicArray(2, RESIZE_STRATEGY.GROW_BY_1);
+
       setTimeout(() => {
         simulationDiv.innerHTML = "<h2>Strategies:</h2>";
-
         const arrGrowBy1 = new DynamicArray(2, RESIZE_STRATEGY.GROW_BY_1);
-        for (let i = 0; i < 100000; i++) arrGrowBy1.add(9);
-        simulationDiv.innerHTML += `<h3>Grow by 1:</h3>${arrGrowBy1.getStats()}<br>BigO 'add' time: O(n), space: O(n)`;
+        for (let i = 0; i < 100000; i++) {
+          arrGrowBy1.add(9);
+        }
+
+        simulationDiv.innerHTML += `<h3>Grow by 1:</h3>${arrGrowBy1.getStats()}`;
 
         const arrDouble = new DynamicArray(2, RESIZE_STRATEGY.DOUBLE);
-        for (let i = 0; i < 100000; i++) arrDouble.add(9);
-        simulationDiv.innerHTML += `<h3>Double in size:</h3>${arrDouble.getStats()}<br>BigO 'add' time: O(1), space: O(n)`;
+        for (let i = 0; i < 100000; i++) {
+          arrDouble.add(9);
+        }
+        simulationDiv.innerHTML += `<h3>Double in size:</h3>${arrDouble.getStats()}`;
       }, 0);
     });
   </script>

@@ -1,0 +1,30 @@
+[
+    {
+        "name": "John",
+        "score": "137443",
+        "time": "1763400536317",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "E",
+        "score": "130266",
+        "time": "1763400908357",
+        "gameType": "Dots Unique After 3",
+        "dataStructure": "HashMap (Hash: Prime Multiply, Dynamic Resize)"
+    },
+    {
+        "name": "John",
+        "score": "97878",
+        "time": "1763400536318",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "mike",
+        "score": "65536",
+        "time": "1763400722307",
+        "gameType": "Dots Unique After 3",
+        "dataStructure": "dynamicArray"
+    }
+]

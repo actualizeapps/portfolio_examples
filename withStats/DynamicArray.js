@@ -4,18 +4,18 @@ class DynamicArray {
         this.data = new Array(this.capacity);
         this.length = 0
         this.countResize = 0;
-        this.averageAddTime = 0;
+        this.totalAddTime = 0;
         this.addCount = 0;
     }
 
     getStats() {
         return `
+        Total time: ${(this.totalAddTime/1000).toFixed(2)} seconds
+        Items added: ${this.addCount}
         Wasted space: ${this.capacity - this.length}
-        Average add time: ${this.averageAddTime.toFixed(40)}
         Number of Times Resized: ${this.countResize}
         `
     }
-
 
     add(element) {
         const startTime = performance.now();
@@ -37,7 +37,7 @@ class DynamicArray {
         this.length+=1;
         const timeItTook = performance.now() - startTime
         this.addCount++;
-        this.averageAddTime = (this.averageAddTime + timeItTook) / this.addCount;
+        this.totalAddTime += timeItTook;
     }
 
     print() {

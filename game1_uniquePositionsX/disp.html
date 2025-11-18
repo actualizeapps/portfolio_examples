@@ -44,7 +44,7 @@
     </style>
 </head>
 <body>
-    <h1>Dots</h1>
+    <h1>Dots UNIQUE AFTER 3!</h1>
     <div id="timer"></div>
     <div id="counter">Dots: 0</div>
     
@@ -54,7 +54,10 @@
         Collision detection data-structure: 
         <select id="dataStructure">
         <option value="dynamicArray">Dynamic Array</option>
-        <option value="hashMap">HashMap</option>
+        <option value="hashMap-no-resize">HashMap (Hash: Char Code Sum, No Resize)</option>
+        <option value="hashMap-char-code-sum">HashMap (Hash: Char Code Sum, Dynamic Resize)</option>
+        <option value="hashMap-prime-multiply">HashMap (Hash: Prime Multiply, Dynamic Resize)</option>
+
       </select></div>
 
     <div id="stats"></div>

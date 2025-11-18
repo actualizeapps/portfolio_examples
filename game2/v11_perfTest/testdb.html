@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <select id="time-filter">
+        <option value="this-week">This Week</option>
+    </select>
+
+    <script src="DatabaseManager.js"></script>
+    <script>
+        const databaseManager = new DatabaseManager();
+
+        let loopEnd = 10;
+        const pause = ms => new Promise(res => setTimeout(res, ms));
+
+        async function runTest() {
+            const startTime = performance.now();
+
+            for (let i = 0; i <= loopEnd; i++) {
+                databaseManager.getLeaderboardFromServer(false)
+
+                //databaseManager.insertLeaderboardEntry("John" + i, i, "Dots Unique", "DynamicArray", false);
+                await pause(1);  // tiny breath between requests
+                console.log(i);
+            }
+            console.log("Javascript inserts completed in seconds:", ((performance.now() - startTime) / 1000).toFixed(2));
+        }
+
+        runTest();
+        // this.hasPrinted = false;
+        // const perfTime = performance.now();
+        // this.interval = setInterval(() => {
+        //     databaseManager.getTopScoreFromLeaderboardServer().then(score => {
+        //         if (score >= loopEnd && !this.hasPrinted) {
+        //             console.log("DB inserts completed in seconds:", ((performance.now() - perfTime) / 1000).toFixed(2));
+        //             this.hasPrinted = true;
+        //             clearInterval(this.interval);
+        //         }
+        //     });
+        // }, 1000);
+    </script>
+</body>
+</html>

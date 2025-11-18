@@ -1,6 +1,18 @@
+const BUCKET_RESIZE_STRATEGY = Object.freeze({
+    NONE: 1,
+    DYNAMIC: 2,
+  });
+
+const HASH_FUNCTION_STRATEGY = Object.freeze({
+    CHAR_CODE_SUM: 1,
+    PRIME_MULTIPLY: 2
+  });
+
 class CustomHashSet {
-    constructor(initialSize = 50) {
+    constructor(initialSize = 50, bucketResizeStrategy = BUCKET_RESIZE_STRATEGY.DYNAMIC, hashStrategy = HASH_FUNCTION_STRATEGY.CHAR_CODE_SUM) {
         this.buckets = new DynamicArray(initialSize);
+        this.bucketResizeStrategy = bucketResizeStrategy;
+        this.hashStrategy = hashStrategy;
         // Initialize all buckets to null
         for (let i = 0; i < initialSize; i++) {
             this.buckets.add(null);
@@ -17,10 +29,29 @@ class CustomHashSet {
         const str = String(key);
         for (let i = 0; i < str.length; i++) {
             const char = str.charCodeAt(i);
-            hash = ((hash << 5) - hash) + char;
-            hash = hash & hash; // Convert to 32-bit integer
+            if (this.hashStrategy === HASH_FUNCTION_STRATEGY.CHAR_CODE_SUM) {
+                hash = hash + char;
+            } else if (this.hashStrategy === HASH_FUNCTION_STRATEGY.PRIME_MULTIPLY) {
+                hash = hash * 31 + char;
+            } 
         }
         return Math.abs(hash) % this.bucketCount;
+    }
+
+    getStrategyInfo() {
+        let strategyInfo = "";
+        if (this.hashStrategy === HASH_FUNCTION_STRATEGY.CHAR_CODE_SUM) {
+            strategyInfo += "HashFunction: Char Code Sum<br>";
+        } else if (this.hashStrategy === HASH_FUNCTION_STRATEGY.PRIME_MULTIPLY) {
+            strategyInfo += "HashFunction: Prime Multiply<br>";
+        }
+
+        if (this.bucketResizeStrategy === BUCKET_RESIZE_STRATEGY.NONE) {
+            strategyInfo += "BucketResizeStrategy: No Resize";
+        } else if (this.bucketResizeStrategy === BUCKET_RESIZE_STRATEGY.DYNAMIC) {
+            strategyInfo += "BucketResizeStrategy: Dynamic Resize";
+        }
+        return strategyInfo;
     }
 
     // Add an element to the set
@@ -31,7 +62,9 @@ class CustomHashSet {
 
         // Resize if load factor exceeded
         if (this.size >= this.bucketCount * this.loadFactor) {
-            this._resize();
+            if (this.bucketResizeStrategy === BUCKET_RESIZE_STRATEGY.DYNAMIC) {
+                this._resize();
+            }
         }
 
         const index = this.hash(element);
@@ -111,7 +144,7 @@ class CustomHashSet {
 
 
     getBigOInfo() {
-        return "'add' time: O(1), space: O(1)<br>'has' time: O(1), space: O(1)";
+        return "BigO: 'add' time: O(1), space: O(1)<br>'has' time: O(1), space: O(1)";
     }
 
     // Debug method to see bucket distribution
@@ -127,7 +160,21 @@ class CustomHashSet {
             }
         }
         const emptyBuckets = this.bucketCount - filledBuckets;
+        const emptyBucketRate = (emptyBuckets / this.bucketCount) * 100;
+        const elementsToBucketRatio = (this.size / this.bucketCount);
 
-        return "Custom HashSet<br>Checks If Exists: "+this.hasChecks+"<br>Bucket Count: "+this.bucketCount+"<br>Empty Buckets: "+emptyBuckets+"<br>MaxChainLength: "+maxChainLength+"<br>"+this.getBigOInfo();
+        const averageChainLength = filledBuckets > 0 ? Number((this.size / filledBuckets).toFixed(2)) : 0;
+
+        return "Custom HashSet"
+        +"<br>"+this.getStrategyInfo()
+        +"<br>Checks If Exists: "+this.hasChecks
+        +"<br>Total Buckets: "+ this.bucketCount
+        +"<br>Total Elements: "+ this.size
+        +"<br>Empty Buckets: "+ emptyBuckets
+        +"<br>Empty Bucket Rate: "+ emptyBucketRate + "%"
+        +"<br>Expected elements per bucket: "+ elementsToBucketRatio
+        +"<br>Average elements per bucket: "+averageChainLength
+        +"<br>Max elements in a bucket: "+maxChainLength+"<br>"
+        +this.getBigOInfo();
     }
 }

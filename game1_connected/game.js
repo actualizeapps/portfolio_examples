@@ -2,10 +2,11 @@ class DotGame {
     constructor() {
         this.canvas = document.getElementById('gameCanvas');
         this.ctx = this.canvas.getContext('2d');
+        this.stats = document.getElementById('stats');
         this.dotManager = new DotManager(this.canvas);
         this.multiplier = new MultiplierTarget(this.canvas);
         this.counter = document.getElementById('counter');
-        this.gameDuration = 12000; 
+        this.gameDuration = 16000; 
         this.gameRunning = false;
         this.timer = new Timer(this.gameDuration, () => this.startGame(), () => this.endGame());
 
@@ -15,7 +16,7 @@ class DotGame {
     }
 
     startGame() {
-        this.dotManager.clear();
+        this.dotManager.resetDotsDataStructure();
         this.gameRunning = true;
         this.multiplier.create();
         this.updateCounter();
@@ -23,6 +24,7 @@ class DotGame {
     }
     
     endGame() {
+        this.stats.innerHTML = this.dotManager.getStats() + this.stats.innerHTML;
         this.gameRunning = false;
         this.multiplier.clear();
         this.draw();

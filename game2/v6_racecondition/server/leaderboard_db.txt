@@ -1,0 +1,359 @@
+[
+    {
+        "name": "John",
+        "score": "50",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "49",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "48",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "47",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "46",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "45",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "44",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "43",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "42",
+        "time": "1763404894691",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "41",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "40",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "39",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "38",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "37",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "36",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "35",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "34",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "33",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "32",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "31",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "30",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "29",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "28",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "27",
+        "time": "1763404894690",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "26",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "25",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "24",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "23",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "22",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "21",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "20",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "19",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "18",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "17",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "16",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "15",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "14",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "13",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "12",
+        "time": "1763404894689",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "11",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "10",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "9",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "8",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "7",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "6",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "5",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "4",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "3",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "2",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "1",
+        "time": "1763404894688",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "0",
+        "time": "1763404894687",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    }
+]

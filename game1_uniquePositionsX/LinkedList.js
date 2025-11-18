@@ -10,7 +10,7 @@ class LinkedList {
         this.orderArray = orderArray;
         this.length = 0;
         this.keyFunction = keyFunction;
-        this.averageAddTime = 0;
+        this.totalAddTime = 0;
         this.addCount = 0;
         this.perfTimer = null;
         if (orderArray) {
@@ -19,11 +19,17 @@ class LinkedList {
     }
 
     getStats() {
-        return "Linked List<br>Wasted space: 0<br>Average add time: "+this.averageAddTime.toFixed(40)+"<br>Number of elements shifted: 0"+"<br>Number of Times Resized: 0<br>"+this.getBigOInfo();
+        return "Linked List<br>Total time: " + (this.totalAddTime/1000).toFixed(2) + " seconds<br>"
+        + "Items added: " +this.addCount + "<br>"
+        + "Time per 10K adds: " + ((this.totalAddTime/this.addCount)*10).toFixed(3) + " seconds<br>"
+        + "Wasted space: 0<br>"
+        + "Number of elements shifted: 0<br>"
+        +"Number of Times Resized: 0<br>"
+        +this.getBigOInfo();
     }
 
     getBigOInfo() {
-        return "'addSorted' time: O(1), space: O(1)";
+        return "BigO: 'addSorted' time: O(1), space: O(1)";
     }
 
     startPerfTimer() {
@@ -34,12 +40,12 @@ class LinkedList {
         if (!this.perfTimer) {
             return;
         }
-        const startTime = this.perfTimer;
-        const timeItTook = performance.now() - startTime;
+        const timeItTook = performance.now() - this.perfTimer;
         this.addCount++;
-        this.averageAddTime = (this.averageAddTime + timeItTook) / this.addCount;
+        this.totalAddTime += timeItTook;
         this.perfTimer = null;
     }
+
 
     initializeEmptyPriorityNodes() {
         // Create placeholder node for each priority
@@ -111,3 +117,4 @@ class LinkedList {
         return array;
     }
 }
+

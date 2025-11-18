@@ -10,7 +10,7 @@ class DynamicArray {
         this.data = new Array(this.capacity);
         this.length = 0
         this.countResize = 0;
-        this.averageAddTime = 0;
+        this.totalAddTime = 0;
         this.addCount = 0;
         this.resizeStrategy = resizeStrategy
         this.orderArray = orderArray;
@@ -26,7 +26,14 @@ class DynamicArray {
     }
 
     getStats() {
-        return "Dynamic Array<br>Resize Strategy: "+this.getResizeStrategy()+"<br>Wasted space: "+(this.capacity - this.length)+"<br>Average add time: "+this.averageAddTime.toFixed(40)+"<br>Number of Times Resized: "+this.countResize +"<br>Number of Elements Shifted: "+this.numberOfElementsShifted+"<br>"+this.getBigOInfo();
+        return "Dynamic Array Resize Strategy: "+this.getResizeStrategy() + "<br>" +
+        "Total time: " + (this.totalAddTime/1000).toFixed(2) + " seconds<br>"
+        + "Items added: " +this.addCount + "<br>"
+        + "Time per 10K adds: " + ((this.totalAddTime/this.addCount)*10).toFixed(3) + " seconds<br>"
+        + "Wasted space: " +(this.capacity - this.length) + "<br>"
+        + "Number of Times Resized: " +this.countResize + "<br>"
+        + "Number of Elements Shifted: " +this.numberOfElementsShifted + "<br>"
+        + this.getBigOInfo();
     }
 
     getBigOInfo() {
@@ -45,10 +52,9 @@ class DynamicArray {
         if (!this.perfTimer) {
             return;
         }
-        const startTime = this.perfTimer;
-        const timeItTook = performance.now() - startTime;
+        const timeItTook = performance.now() - this.perfTimer;
         this.addCount++;
-        this.averageAddTime = (this.averageAddTime + timeItTook) / this.addCount;
+        this.totalAddTime += timeItTook;
         this.perfTimer = null;
     }
 

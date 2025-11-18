@@ -1,0 +1,23 @@
+[
+    {
+        "name": "John",
+        "score": "100",
+        "time": "1763399944338",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "100",
+        "time": "1763399949960",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    },
+    {
+        "name": "John",
+        "score": "100",
+        "time": "1763399951877",
+        "gameType": "Dots Unique",
+        "dataStructure": "DynamicArray"
+    }
+]
